@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel principal</title>
+</head>
+<body>
+    
+    <h1>Hola, {nombre} ¿a donde caminamos?</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Ruta</th>
+                <th>Guía</th>
+                <th>Guía </th>
+                <th>Fecha</th>
+                <th>Dificultad</th>
+                <th>Cupos</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for ruta in rutas %}
+            <tr>
+                <td>{{ ruta.nombre }}</td>
+                <td>{{ ruta.distancia }}</td>
+                <td>{{ ruta.duracion }}</td>
+                <td>{{ ruta.fecha }}</td>
+                <td>{{ ruta.dificultad }}</td>
+                <td>{{ ruta.cupos }}</td>
+                <td><a href="">Ver | Editar | Borrar</a></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

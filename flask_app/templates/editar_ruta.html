@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Editar Ruta</title>
+</head>
+<body>
+    <h1>Editar Ruta</h1>
+    <form action="/editar_ruta" method="POST">
+        <label for="nombre">Nombre de la ruta:</label><br>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+
+        <label for="fecha">Fecha:</label><br>
+        <input type="date" id="fecha" name="fecha" required><br><br>
+
+        <label for="dificultad">Dificultad:</label><br>
+        <select id="dificultad" name="dificultad" required>
+            <option value="">Seleccione una opción</option>
+            <option value="Fácil">Fácil</option>
+            <option value="Media">Media</option>
+            <option value="Difícil">Difícil</option>
+        </select><br><br>
+
+        <label for="punto_encuentro">Punto de encuentro:</label><br>
+        <input type="text" id="punto_encuentro" name="punto_encuentro" required><br><br>
+
+        <label for="Descripción">Descripción:</label><br>
+        <textarea id="Descripción" name="Descripción" rows="4" cols="30"></textarea><br><br>
+
+        <input type="submit" value="Guardar Cambios">
+    </form>
+</body>
+</html>
