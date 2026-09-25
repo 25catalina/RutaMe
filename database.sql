@@ -7,6 +7,10 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema Rutame
 -- -----------------------------------------------------
+
+-- -----------------------------------------------------
+-- Schema Rutame
+-- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `Rutame` DEFAULT CHARACTER SET utf8 ;
 USE `Rutame` ;
 
@@ -33,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `Rutame`.`rutas` (
   `id` INT NOT NULL AUTO_INCREMENT,
   `nombre` VARCHAR(45) NULL,
   `dificultad` VARCHAR(45) NULL,
-  `cupo` INT NULL,
+  `cupos` INT NULL,
   `fecha` DATETIME NULL,
   `punto_de_encuentro` VARCHAR(45) NULL,
   `descripcion` TEXT(320) NULL,
@@ -65,13 +69,13 @@ CREATE TABLE IF NOT EXISTS `Rutame`.`inscripciones` (
   CONSTRAINT `fk_usuarios_has_rutas_usuarios1`
     FOREIGN KEY (`usuario_id`)
     REFERENCES `Rutame`.`usuarios` (`id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE,
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
   CONSTRAINT `fk_usuarios_has_rutas_rutas1`
     FOREIGN KEY (`ruta_id`)
     REFERENCES `Rutame`.`rutas` (`id`)
-    ON DELETE CASCADE
-    ON UPDATE CASCADE)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
 ENGINE = InnoDB;
 
 
