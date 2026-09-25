@@ -7,10 +7,6 @@ SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='ONLY_FULL_GROUP_BY,STRICT_TRANS_TABLES,N
 -- -----------------------------------------------------
 -- Schema Rutame
 -- -----------------------------------------------------
-
--- -----------------------------------------------------
--- Schema Rutame
--- -----------------------------------------------------
 CREATE SCHEMA IF NOT EXISTS `Rutame` DEFAULT CHARACTER SET utf8 ;
 USE `Rutame` ;
 
@@ -43,11 +39,11 @@ CREATE TABLE IF NOT EXISTS `Rutame`.`rutas` (
   `descripcion` TEXT(320) NULL,
   `created_at` DATETIME NULL,
   `updated_at` DATETIME NULL,
-  `usuarios_id` INT NOT NULL,
-  PRIMARY KEY (`id`, `usuarios_id`),
-  INDEX `fk_rutas_usuarios1_idx` (`usuarios_id` ASC) VISIBLE,
+  `usuario_id` INT NOT NULL,
+  PRIMARY KEY (`id`, `usuario_id`),
+  INDEX `fk_rutas_usuarios1_idx` (`usuario_id` ASC) VISIBLE,
   CONSTRAINT `fk_rutas_usuarios1`
-    FOREIGN KEY (`usuarios_id`)
+    FOREIGN KEY (`usuario_id`)
     REFERENCES `Rutame`.`usuarios` (`id`)
     ON DELETE NO ACTION
     ON UPDATE NO ACTION)
@@ -69,13 +65,13 @@ CREATE TABLE IF NOT EXISTS `Rutame`.`inscripciones` (
   CONSTRAINT `fk_usuarios_has_rutas_usuarios1`
     FOREIGN KEY (`usuario_id`)
     REFERENCES `Rutame`.`usuarios` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_usuarios_has_rutas_rutas1`
     FOREIGN KEY (`ruta_id`)
     REFERENCES `Rutame`.`rutas` (`id`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
+    ON DELETE CASCADE
+    ON UPDATE CASCADE)
 ENGINE = InnoDB;
 
 

@@ -1,22 +1,55 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
+    <title>RutaMe - Registro e Inicio de Sesión</title>
 </head>
 <body>
-    <form action="/registro" method="POST">
-        <label for="nombre">Nombre:</label>
-        <input type="text" id="nombre" name="nombre" required><br><br>
+    <h1>RutaMe</h1>
 
-        <label for="email">Correo electrónico:</label>
-        <input type="email" id="email" name="email" required><br><br>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <p>{{ message }}</p>
+      {% endfor %}
+    {% endwith %}
 
-        <label for="password">password:</label>
-        <input type="password" id="password" name="password" required><br><br>
+    <div style="display:flex; gap:50px;">
+        <!-- REGISTRO -->
+        <div>
+            <h2>Registro</h2>
+            <form action="/registrar" method="POST">
+                <label>Nombre:</label>
+                <input type="text" name="nombre" required><br><br>
 
-        <input type="submit" value="Registrarse">
-    </form>
+                <label>Apellido:</label>
+                <input type="text" name="apellido" required><br><br>
+
+                <label>E-mail:</label>
+                <input type="email" name="email" required><br><br>
+
+                <label>Contraseña:</label>
+                <input type="password" name="password" required><br><br>
+
+                <label>Conf. Contraseña:</label>
+                <input type="password" name="confirm_password" required><br><br>
+
+                <input type="submit" value="Registrarme">
+            </form>
+        </div>
+
+        <!-- INICIO DE SESIÓN -->
+        <div>
+            <h2>Inicio de Sesión</h2>
+            <form action="/login" method="POST">
+                <label>E-mail:</label>
+                <input type="email" name="email" required><br><br>
+
+                <label>Contraseña:</label>
+                <input type="password" name="password" required><br><br>
+
+                <input type="submit" value="Entrar">
+            </form>
+        </div>
+    </div>
 </body>
 </html>
